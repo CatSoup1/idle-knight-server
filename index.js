@@ -30,6 +30,7 @@ io.on('connection', async(socket) => {
     } else {
     socket.emit("usernameTaken")
     }
+  }
   })
 })
 
