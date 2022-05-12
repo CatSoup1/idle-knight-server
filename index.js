@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
 io.on('connection', async(socket) => {
   
   socket.on('sendData', async(data) => {
-  if data.type == "signup" {
+  if (data.type == "signup") {
      var check =  await mdb.get(`data-${data.username}`)
      if (check == null) {
      var hash = CryptoJS.SHA256(data.key).toString();
@@ -30,9 +30,6 @@ io.on('connection', async(socket) => {
     } else {
     socket.emit("usernameTaken")
     }
-  } else {
-  
-  }
   
 })
 
