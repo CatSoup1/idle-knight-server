@@ -3,11 +3,9 @@ const app = express();
 const http = require('http');
 const server = http.createServer(app);
 var CryptoJS = require("crypto-js");
-
 let { DB } = require("mongquick");
 const mongoSec = process.env.mongoSec
 const mdb = new DB(`mongodb+srv://xl83:${mongoSec}@cluster0.c2sln.mongodb.net/Cluster0?retryWrites=true&w=majority`);
-
 
 const io = require("socket.io")(server, {
     cors: {
