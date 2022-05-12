@@ -30,7 +30,7 @@ io.on('connection', async(socket) => {
     } else {
     socket.emit("usernameTaken")
     }
-  
+  })
 })
 
 server.listen(process.env.PORT || 3000, () => {
