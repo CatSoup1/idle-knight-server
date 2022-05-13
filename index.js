@@ -21,10 +21,12 @@ io.on('connection', async(socket) => {
   
   socket.on('sendData', async(data) => {
   if (data.type == "signup") {
-     var check =  await mdb.get(`info-${data.username}`)
+     var checkLower = data.username.toLowerCase()
+     var check =  await mdb.get(`info-${checkLower}`)
      if (check == null) {
      var hash = CryptoJS.SHA256(data.password).toString();
-     mdb.set(`info-${data.username}`, hash);
+     var userLower = data.username.toLowerCase()
+     mdb.set(`info-${userLower}`, {pass: hash, user: data.username});
     } else {
     socket.emit("usernameTaken")
     }
